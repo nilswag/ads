@@ -34,6 +34,16 @@ public class ArrayList<T> {
         size++;
     }
 
+    public void swap(int index1, int index2) {
+        if (index1 < 0 || index1 >= size)
+            throw new IllegalArgumentException("Index is out of bounds.");
+        if (index2 < 0 || index2 >= size)
+            throw new IllegalArgumentException("Index is out of bounds.");
+        T temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
+    }
+
     public void removeAt(int index) {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("Index is out of bounds.");
@@ -57,10 +67,19 @@ public class ArrayList<T> {
         removeAt(0);
     }
 
+    public void removeLast() {
+        removeAt(size - 1);
+    }
+
     public T get(int index) {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("Index is out of bounds.");
         return arr[index];
+    }
+
+    public T getFirst() {
+        if (isEmpty()) throw new IllegalStateException("List is empty.");
+        return arr[0];
     }
 
     public void set(T element, int index) {
@@ -96,5 +115,24 @@ public class ArrayList<T> {
         capacity = 1;
         arr = (T[]) new Object[capacity];
     }
+
+    @Override
+    public String toString() {
+        if (size == 0) return "[]";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
+        for (int i = 0; i < size; i++) {
+            sb.append(arr[i]);
+            if (i < size - 1) {
+                sb.append(", ");
+            }
+        }
+
+        sb.append("]");
+        return sb.toString();
+    }
+
 
 }

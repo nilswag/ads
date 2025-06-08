@@ -1,6 +1,6 @@
 package structures;
 
-public class MinHeap {
+public class MaxHeap {
 
     /*
      parent = (index - 1) / 2
@@ -10,7 +10,7 @@ public class MinHeap {
 
     private ArrayList<Integer> list;
 
-    public MinHeap() {
+    public MaxHeap() {
         list = new ArrayList<>();
     }
 
@@ -19,7 +19,7 @@ public class MinHeap {
         int cur = list.size() - 1;
         while (cur > 0) {
             int p = (cur - 1) / 2;
-            if (list.get(p) > list.get(cur)) {
+            if (list.get(p) < list.get(cur)) {
                 list.swap(cur, p);
                 cur = p;
             } else break;
@@ -34,14 +34,14 @@ public class MinHeap {
         while (true) {
             int l = current * 2 + 1;
             int r = current * 2 + 2;
-            int smaller = current;
+            int bigger = current;
 
-            if (l < list.size() && list.get(l) < list.get(smaller)) smaller = l;
-            if (r < list.size() && list.get(r) < list.get(smaller)) smaller = r;
-            if (smaller == current) break;
+            if (l < list.size() && list.get(l) > list.get(bigger)) bigger = l;
+            if (r < list.size() && list.get(r) > list.get(bigger)) bigger = r;
+            if (bigger == current) break;
 
-            list.swap(current, smaller);
-            current = smaller;
+            list.swap(current, bigger);
+            current = bigger;
         }
         return element;
     }
