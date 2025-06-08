@@ -8,7 +8,7 @@ public class HeapSort {
 
     public static <T> void sort(ArrayList<T> list, Comparator<T> comp) {
         for (int i = (list.size() - 1) / 2; i >= 0; i--) heapify(list, comp, list.size(), i);
-        for (int i = list.size() - 1; i >= 0; i--) {
+        for (int i = list.size() - 1; i > 0; i--) {
             list.swap(0, i);
             heapify(list, comp, i, 0);
         }
