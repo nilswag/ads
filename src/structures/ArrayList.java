@@ -82,6 +82,11 @@ public class ArrayList<T> {
         return arr[0];
     }
 
+    public T getLast() {
+        if (isEmpty()) throw new IllegalStateException("List is empty.");
+        return arr[size - 1];
+    }
+
     public void set(T element, int index) {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("Index is out of bounds.");

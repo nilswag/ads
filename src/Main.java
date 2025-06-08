@@ -1,22 +1,14 @@
-import structures.MaxHeap;
-import structures.MinHeap;
+import algorithms.PQSort;
+import algorithms.SelectionSort;
+import structures.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
-        MaxHeap heap = new MaxHeap();
-        heap.push(-1);
-        heap.push(-2);
-        heap.push(-5);
-        heap.push(7);
-        heap.push(16);
-        heap.push(23);
-        heap.push(111);
-
-        while (!heap.isEmpty()) {
-            System.out.println(heap);
-            heap.pop();
-        }
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 30; i >= 0; i--) list.add(i);
+        SelectionSort.sort(list, Integer::compare);
+        System.out.println(list);
     }
 
 }
