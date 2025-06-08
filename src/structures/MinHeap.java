@@ -1,6 +1,8 @@
 package structures;
 
-public class MinHeap {
+import java.util.Comparator;
+
+public class MinHeap <T> {
 
     /*
      parent = (index - 1) / 2
@@ -8,26 +10,28 @@ public class MinHeap {
      right child = 2 * index + 2
      */
 
-    private ArrayList<Integer> list;
+    private ArrayList<T> list;
+    private Comparator<T> comp;
 
-    public MinHeap() {
+    public MinHeap(Comparator<T> comp) {
         list = new ArrayList<>();
+        this.comp = comp;
     }
 
-    public void push(int element) {
+    public void push(T element) {
         list.add(element);
         int cur = list.size() - 1;
         while (cur > 0) {
             int p = (cur - 1) / 2;
-            if (list.get(p) > list.get(cur)) {
+            if (comp.compare(list.get(p), list.get(cur)) > 0) {
                 list.swap(cur, p);
                 cur = p;
             } else break;
         }
     }
 
-    public int pop() {
-        int element = list.getFirst();
+    public T pop() {
+        T element = list.getFirst();
         list.swap(0, list.size() - 1);
         list.removeLast();
         int current = 0;
@@ -36,14 +40,23 @@ public class MinHeap {
             int r = current * 2 + 2;
             int smaller = current;
 
-            if (l < list.size() && list.get(l) < list.get(smaller)) smaller = l;
-            if (r < list.size() && list.get(r) < list.get(smaller)) smaller = r;
+            if (l < list.size() && comp.compare(list.get(l), list.get(smaller)) < 0) smaller = l;
+            if (r < list.size() && comp.compare(list.get(r), list.get(smaller)) < 0) smaller = r;
             if (smaller == current) break;
 
             list.swap(current, smaller);
             current = smaller;
         }
         return element;
+    }
+
+    public void clear() {
+        list.clear();
+    }
+
+    public T peek() {
+        if (list.isEmpty()) throw new IllegalStateException("Heap is empty.");
+        return list.getFirst();
     }
 
     public int size() {
