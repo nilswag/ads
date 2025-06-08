@@ -36,6 +36,7 @@ public class MaxHeap <T> {
     }
 
     public T pop() {
+        if (list.isEmpty()) throw new IllegalStateException("Heap is empty.");
         T element = list.getFirst();
         list.swap(0, list.size() - 1);
         list.removeLast();
