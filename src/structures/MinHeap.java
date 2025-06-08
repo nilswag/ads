@@ -10,8 +10,8 @@ public class MinHeap <T> {
      right child = 2 * index + 2
      */
 
-    private ArrayList<T> list;
-    private Comparator<T> comp;
+    private final ArrayList<T> list;
+    private final Comparator<T> comp;
 
     public MinHeap(Comparator<T> comp) {
         list = new ArrayList<>();

@@ -4,10 +4,10 @@ import java.util.Comparator;
 
 public class PriorityQueue <T> {
 
-    private MinHeap<T> heap;
+    private final MinHeap<T> heap;
 
     public PriorityQueue(Comparator<T> comp) {
-        heap = new MinHeap(comp);
+        heap = new MinHeap<>(comp);
     }
 
     public void add(T element) {
