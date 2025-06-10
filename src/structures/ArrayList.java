@@ -13,6 +13,13 @@ public class ArrayList<T> {
         arr = (T[]) new Object[capacity];
     }
 
+    @SuppressWarnings("unchecked")
+    public ArrayList(int capacity) {
+        this.capacity = 1;
+        size = 0;
+        arr = (T[]) new Object[capacity];
+    }
+
     public void add(T element) {
         if (size >= capacity) resize(capacity * 2);
         arr[size] = element;

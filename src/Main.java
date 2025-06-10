@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import algorithms.QuickSort;
+=======
+import algorithms.MergeSort;
+>>>>>>> 10bd652f837c93870375e639bd1e2d8ec024bff9
 import structures.ArrayList;
 
 import java.util.Random;
@@ -19,7 +23,6 @@ public class Main {
         ArrayList<Integer> list = sample(50, 0, 200);
         System.out.println(list);
         QuickSort.sort(list, Integer::compare);
-        System.out.println(list);
     }
 
 }
