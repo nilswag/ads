@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import algorithms.QuickSort;
-=======
-import algorithms.MergeSort;
->>>>>>> 10bd652f837c93870375e639bd1e2d8ec024bff9
 import structures.ArrayList;
 
 import java.util.Random;
